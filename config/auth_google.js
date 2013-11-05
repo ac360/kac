@@ -1,6 +1,8 @@
 // Google OAuth2
+var express         =   require('express')
 var googleapis      = 	require('googleapis')
 var OAuth2Client    = 	googleapis.OAuth2Client;
+var app             =   express();
 
 // Gets Google Authentication - TODO: Put these as ENV Configs
 

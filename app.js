@@ -62,4 +62,4 @@
 	});
 
 // Exports the express app for other modules to use
-	module.exports.app = app;
+	exports.app = app;
