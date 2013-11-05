@@ -1,0 +1,69 @@
+<% include header %>
+
+<div class="row">
+	<div class="">
+
+		<div class="row">
+			<div id="first-container" class="col-md-12">
+				<h1 id="logo" data-id="<%= userId %>">Keep-A-Contact</h1>
+			</div>
+		</div>
+
+		<div class="row">
+			<div id="dashboard-container" class="col-md-offset-4 col-md-4 col-md-offset-4">
+				
+				<div id="menu-container" class="row hide">
+					<div class="col-md-8" style="padding:0px">
+						<div id="primary-nav" class="menu">
+						    <a id="menu-contacts-link" class="item primary-nav" data-link="contacts">
+						      <i class="fa fa-group"></i>
+						    </a>
+						    <a id="menu-import-link" class="item primary-nav" data-link="import">
+						      <i class="fa fa-plus"></i>
+						    </a>
+						    <a id="menu-features-link" class="item primary-nav" data-link="features">
+						      <i class="fa fa-th"></i>
+						    </a>
+						    <a id="menu-settings-link" class="item primary-nav" data-link="settings">
+						      <i class="fa fa-cog"></i>
+						    </a>
+						</div> <!-- #primary-menu -->
+					</div>
+					<div class="col-md-4" style="padding:0px">
+						<input id="search-field" type="text" placeholder="Search..." class="pull-right form-control input-sm">
+					</div>
+							<!-- <div class="row" style="padding-top:5px;padding-bottom:5px;">
+									<div class="col-md-12" >
+										<div id="submenu-import" class="submenu" style="display:none;" data-submenu="import">
+										    <a id="import-google-link" class="item submenu-nav"><i class="remove icon red"></i> Google</a>
+										    <a id="import-facebook-link" class="item submenu-nav"><i class="remove icon red"></i> Facebook</a>
+										    <a id="import-linkedin-link" class="item submenu-nav"><i class="remove icon red"></i> LinkedIn</a>
+										</div>
+										<div id="submenu-features" class="submenu" style="display:none;" data-submenu="features">
+										    <a class="item submenu-nav">Feature 1</a>
+										    <a class="item submenu-nav">Feature 2</a>
+										    <a class="item submenu-nav">Feature 3</a>
+										</div>
+										<div id="submenu-settings" class="submenu" style="display:none;" data-submenu="settings">
+										    <a class="item submenu-nav">Account</a>
+										    <a class="item submenu-nav">Billing</a>
+										</div>
+									</div>
+							</div> -->
+						
+				</div> <!-- #menu-container -->
+
+		  		<div id="screen-container" class="row">
+		  		</div>
+
+		  		<div id="fourth-container" class="">
+		  			<p class="centered" style="padding:10px 0px;"><a href="/logout">Logout</a></p>
+		  		</div>
+
+		  	</div> <!-- #dashboard-container -->
+	  	</div> <!-- .row -->
+
+	</div> <!-- col-md-6 -->
+</div> <!-- .row -->
+
+<% include footer %>
