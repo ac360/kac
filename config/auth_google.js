@@ -6,7 +6,12 @@ var OAuth2Client    = 	googleapis.OAuth2Client;
 
 var CLIENT_ID       = 	'536518698309.apps.googleusercontent.com'
 var CLIENT_SECRET   = 	'vEtS_zEU9FyGKRSobUzFBoZt'
-var REDIRECT_URL    = 	'http://localhost:3000/auth/google/callback'
+if ('development' == app.get('env')) {
+  var REDIRECT_URL    = 	'http://localhost:3000/auth/google/callback'
+};
+if ('production'  == app.get('env')) {
+  var REDIRECT_URL    = 	'http://keep-a-contactv2.herokuapp.com/auth/google/callback'
+};
 var SCOPE           =   'https://www.google.com/m8/feeds'
 var oauth2Client    = 	new OAuth2Client(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL);
 
