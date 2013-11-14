@@ -18,7 +18,8 @@
 /* Bootstrap Mods */
 
 /* KAC Styles */
-body { font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;background:#f8f5f0;color:#666;}
+p, span, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { font-family:'Lato', Helvetica, Arial, sans-serif;color:#777; }
+body { font: 14px 'Lato', Helvetica, Arial, sans-serif;background:#FDC162;color:#777;}
 
 a { color: #00B7FF;text-decoration: none;}
 a:hover {text-decoration: none;color:#52ceff;}
@@ -26,29 +27,38 @@ a:hover {text-decoration: none;color:#52ceff;}
 .no-margin {margin:0px;}
 
 /* SVT Styles */
-.svt-green-success {color:#74b561;}
+.svt-green-success {color:#60D7A9;}
 
-#logo {color:#222;margin:0px;text-align:center;font-size:16px;}
+#logo {color:#fff;margin:0px;font-size:16px;font-family:'Lato', sans-serif;}
+#logo a {color:#fff!important;}
 #dashboard-container {}
-#first-container {margin-top:7%;height:30px;}
+#first-container {margin-top:7%;height:24px;padding:0px;}
 #menu-container {height:auto;background:transparent;padding:5px 0px;display:none;}
 #search-field {max-width:200px;}
-#screen-container {background:#fff;min-height:200px;padding:25px;border-radius:6px;-webkit-box-shadow:  0px 1px 3px 0px rgba(0, 0, 0, 0.3);box-shadow:  0px 1px 3px 0px rgba(0, 0, 0, 0.3);}
+#screen-container {background:#fff;color:#aaa;min-height:200px;padding:25px;border-radius:6px;box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1);}
+#logout-link {color:rgba(0, 0, 0, 0.2);}
 
 #screen-import p {margin: 5px 0px 5px 0px;color:#777;}
-#screen-import h5 {margin:0px 0px 8px 0px;font-size:14px;color:#777;}
+#screen-import h5 {margin:0px 0px 8px 0px;font-size:14px;color:#777;font-weight:bold;}
 #screen-import small {text-align:center;}
 #screen-import ul {width:230px;margin:0px auto;}
 #screen-import ul li {padding:5px 0px;}
 #screen-import ul li .fa-flash {color:#f1d11f;padding-right:4px;}
 #screen-import .imported {color:#74b960;}
 
-#screen-import-google h2 {margin-bottom:2px;margin-top:0px;}
+#screen-import-google h2 {color:#60D7A9;margin-bottom:2px;margin-top:0px;}
 #screen-import-google h4 {margin-bottom:6px;margin-top:0px;}
 #screen-import-google .fa-refresh {font-size:55px;}
 
-#google-contacts-list {display:none;background:#f6f6f6;padding-top:10px;padding-bottom:10px;}
-#google-contacts-list .contact-list-item {background:#ffffff;padding:5px 0px;margin-bottom:5px;-webkit-box-shadow:  0px 1px 2px 0px rgba(0, 0, 0, 0.2);box-shadow:  0px 1px 2px 0px rgba(0, 0, 0, 0.2);}
+#contacts-list {background:#f6f6f6;padding-top:10px;padding-bottom:10px;max-height:400px;overflow: scroll;border:1px solid #e8e8e8;}
+#contacts-list li {background:#ffffff;padding:10px;margin-bottom:5px;height:50px;overflow:hidden;-webkit-box-shadow:  0px 1px 2px 0px rgba(0, 0, 0, 0.2);box-shadow:  0px 1px 2px 0px rgba(0, 0, 0, 0.2);}
+#contacts-list li:hover {cursor: pointer;background:#fffbf4;}
+#contact-expanded {display:none;width:100%;height:auto;background:transparent;}
+#contacts-list li .contact-title {font-size:14px;margin:0px 0px 6px 0px;padding:0px;color:#555;font-weight:bold;}
+#contact-expanded .contact-organization {font-size:11px;margin:0px;padding:0px;color:#888;}
+#contact-expanded .contact-phone-number-primary, #contact-expanded .contact-email-primary, #contact-expanded .contact-address-primary {color:#666;margin-bottom:5px;}
+#contact-expanded .contact-phone-number-category, #contact-expanded .contact-email-category, #contact-expanded .contact-address-category {text-transform: capitalize;margin-right:5px;color:#aaa;}
+#contact-expanded .contact-email, #contact-expanded .contact-phone-number, #contact-expanded .contact-address   {margin-bottom:2px;margin-top:0px;color:#aaa;}
 
 #network-links {text-align: center}
 #network-links .connected    {color:#666;}

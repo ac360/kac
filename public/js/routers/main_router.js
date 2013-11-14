@@ -10,7 +10,6 @@ KAC.Routers.Main = Backbone.Router.extend({
     },
 
     initialize: function() {
-
     }, // /initialize
 
     home: function() {
@@ -30,7 +29,8 @@ KAC.Routers.Main = Backbone.Router.extend({
               var menuview = new KAC.Views.Menu({ model: user });
               // If User Has No Contacts Or Is New
               if ( user.google_import == false  && user.facebook_import == false && user.linkedin_import == false) {
-                // self.getStartedScreen(user);
+                console.log("redirecting...");
+                KAC.Router.navigate("dashboard/import", {trigger: true})
               } else {
                 // DEFAULT HOME PAGE - CONTACTS LIST?
               };
@@ -80,7 +80,8 @@ KAC.Routers.Main = Backbone.Router.extend({
       var current_user = new KAC.Models.CurrentUser();
       current_user.fetch({
           success: function (response) {
-              alert("hello from the contacts page!")
+              var user = response.toJSON();
+              var screenContacts = new KAC.Views.ScreenContacts({ model: user });
           } // End Success
       }); // End fetch
     },

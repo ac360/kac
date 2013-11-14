@@ -1,5 +1,5 @@
 KAC.Collections.GoogleContacts = Backbone.Collection.extend({
 
-  url: '/api/googlecontacts'
+  url: '/api/google_contacts'
 
 }); // End Collection

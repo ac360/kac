@@ -4,14 +4,14 @@ window.JST['main/get_started'] = _.template(
     "<h3 class='centered grey-med' style='font-size:20px;'>No Contacts Yet</h3><h5 class='centered grey-med'>Select <i class='add icon' style='font-size:18px;color:rgba(0, 0, 0, 0.74902);'></i> And Start Backing Up Your Contacts</h5>"
 );
 
+window.JST['screens/contacts/contacts_list'] = _.template(
+    "<ul id='contacts-list' class='col-md-12 list-unstyled'></ul>"
+);
+
 window.JST['screens/import/import'] = _.template(
-    "<p class='centered'><small>You currently have no contacts...</small></p><h5 class='centered grey-dark'>Connect Your Accounts to Start Importing</h5><ul class='list-unstyled'><li id='import-google-link'><i class='fa fa-flash'></i> <a href='<%= user.google_auth_link %>'class=''>Connect Google Account</a></li><li id='import-facebook-link'><i class='fa fa-flash'></i> <a href='#' class=''>Connect Facebook Account</a></li><li id='import-linkedin-link'><i class='fa fa-flash'></i> <a href='#' class=''>Connect LinkedIn Account</a></li></ul>"
+    "<p class='centered'>You currently have no contacts...</p><h5 class='centered'>Connect Your Accounts to Start Importing</h5><ul class='list-unstyled'><li id='import-google-link'><i class='fa fa-flash'></i> <a href='<%= user.google_auth_link %>'class=''>Connect Google Account</a></li><li id='import-facebook-link'><i class='fa fa-flash'></i> <a href='#' class=''>Connect Facebook Account</a></li><li id='import-linkedin-link'><i class='fa fa-flash'></i> <a href='#' class=''>Connect LinkedIn Account</a></li></ul>"
 );
 
 window.JST['screens/import/google/authenticated'] = _.template(
-    "<h2 class='centered svt-green-success'>Success!</h2><p class='centered'><small>You've connected your Google Account</small></p><p class='centered'><small>Now, we're importing your Google contacts</small></p><div class='row'><div class='col-md-12 centered'><i class='fa fa-refresh fa-spin'></i></div></div>"
-);
-
-window.JST['screens/import/google/imported'] = _.template(
-    "<h4 class='centered svt-green-success'>Import Completed!</h4><p class='centered'><small><%= contacts.length %> of your Google Contacts have been Imported</small></p><p class='centered'><small>Here are a few...</small></p><div class='row'><div id='google-contacts-list' class='col-md-12'></div><div class='row'></div></div>"
+    "<h2 class='centered svt-green-success'>Success!</h2><p class='centered' style='margin-bottom:10px;'>You've connected your Google Account</p><p class='centered' style='font-weight:bold'>Now, we're importing your Google contacts</p><div class='row'><div class='col-md-12 centered'><i class='fa fa-refresh fa-spin'></i></div></div>"
 );

@@ -16,10 +16,13 @@ exports.signup = function (req, res) {
             if (err) return res.render('index', {user: req.user, message: err.code === 11000 ? "User already exists" : err.message});
 
             req.login(user, function (err) {
-                if (err) return next(err);
+                if (err) {
+                  console.log(err); 
+                  return next(err);
+                }
                 // On Successful Login
-                console.log(user);
-                res.redirect('/dashboard/import');
+                console.log("User Registered: ", user);
+                res.redirect('/dashboard');
             })
         }
     )
@@ -38,7 +41,7 @@ exports.postlogin = function(req, res, next) {
     }
     req.logIn(user, function(err) {
       if (err) { return next(err); }
-      return res.redirect('/dashboard/import');
+      return res.redirect('/dashboard');
     });
   })(req, res, next);
 };

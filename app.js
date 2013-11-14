@@ -45,11 +45,13 @@
 		app.post('/login',      	      landingpage.postlogin);
 	// User Page Routes
 		app.get('/dashboard',             					   pass.ensureAuthenticated, userpage.dashboard);
+		app.get('/dashboard/contacts',             			   pass.ensureAuthenticated, userpage.dashboard);
 		app.get('/dashboard/import',      					   pass.ensureAuthenticated, userpage.dashboard);
 	    app.get('/dashboard/import/google',                    pass.ensureAuthenticated, userpage.dashboard);
 	// API Routes
 		app.get('/api/current_user',      pass.ensureAuthenticated, api.currentuser)
-		app.get('/api/googlecontacts',    pass.ensureAuthenticated, api.import_and_save_google_contacts)
+		app.get('/api/kac_contacts',      pass.ensureAuthenticated, api.contacts_all)
+		app.post('/api/kac_contacts',     pass.ensureAuthenticated, api.contacts_create)
 		app.get('/logout',            	  userpage.logout);
 	// Authentication Routes
 		app.get('/auth/google/callback',  userpage.google_auth);

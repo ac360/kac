@@ -26,17 +26,18 @@ var ObjectId = Schema.ObjectId
 
 // User schema
 var userSchema = new Schema({
-  email: 		 			{ type: String,  required: true, unique: true },
-  password: 	 			{ type: String,  required: true  },
-  admin: 		 			{ type: Boolean, required: true  },
+  email: 		 			        { type: String,  required: true, unique: true },
+  password: 	 			      { type: String,  required: true  },
+  admin: 		 			        { type: Boolean, required: true  },
   google_access_token:  	{ type: String,  required: false },
   google_refresh_token: 	{ type: String,  required: false },
-  google_auth:   			{ type: Boolean, required: true, default: false},
-  google_import: 			{ type: Boolean, required: true, default: false},
-  facebook_auth: 			{ type: Boolean, required: true, default: false},
-  facebook_import:  		{ type: Boolean, required: true, default: false},
-  linkedin_auth:    		{ type: Boolean, required: true, default: false},
-  linkedin_import:  		{ type: Boolean, required: true, default: false}
+  google_auth:   			    { type: Boolean, required: true, default: false},
+  google_import: 			    { type: Boolean, required: true, default: false},
+  facebook_auth: 			    { type: Boolean, required: true, default: false},
+  facebook_import:        { type: Boolean, required: true, default: false},
+  linkedin_auth:    	    { type: Boolean, required: true, default: false},
+  linkedin_import:  		  { type: Boolean, required: true, default: false},
+  contacts:               [{ type: Schema.Types.ObjectId, ref: 'Contact' }]
 });
 
 // Bcrypt middleware
@@ -64,6 +65,30 @@ userSchema.methods.comparePassword = function(candidatePassword, cb) {
 	});
 };
 
-// Export user model
+// Contacts schema
+var contactSchema = new Schema({
+  title:                  { type: String },
+  emails:                 { type: Object },
+  phone_numbers:          { type: Object },
+  addresses:              { type: Object },
+  notes:                  { type: Object },
+  ids:                    { type: Object, unique: true },
+  update_dates:           { type: Object },
+  organizations:          { type: Object },
+  owner:                  { type: Schema.Types.ObjectId, ref: 'User' },
+  created:                { type: Date, default: Date.now },
+});
+
+// Export User model
 var userModel     = mongoose.model('User', userSchema);
 exports.userModel = userModel;
+
+// Export Contact model
+var contactModel     = mongoose.model('Contact', contactSchema);
+exports.contactModel = contactModel;
+
+
+
+
+
+

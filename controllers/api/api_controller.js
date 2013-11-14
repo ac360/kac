@@ -3,6 +3,8 @@ var mongoose		= require('mongoose');
 var util            = require('util');
 var googleauth 		= require('../../config/auth_google');
 var GoogleContacts  = require('../../config/contacts_google_2').GoogleContacts;
+var Contact         = mongoose.model('Contact')
+var _               = require('underscore');
 
 exports.currentuser = function(req, res){
 	  var user 					 = {}
@@ -21,40 +23,49 @@ exports.currentuser = function(req, res){
 	  res.send(user);
 };
 
-// Fetch Google Contacts
-exports.import_and_save_google_contacts = function(req, res) {
-	var user = req.user
-    
-	var c = new GoogleContacts({
-	    token: user.google_access_token
+exports.contacts_all = function(req, res){
+	console.log("Now Fetching User's Contacts...")
+	Contact.find({ owner: req.user}, function (err, users) {
+		if (err) { console.log(err) };
+	  	console.log(users.length + " Users Fetched...");
+	  	var sortedUsers = _(users).sortBy("title");
+	  	res.send(sortedUsers);
 	});
-	c.on('error', function (e) {
-	    console.log('error', e);
-	});
-	c.on('contactsReceived', function (contacts) {
-	    // console.log('contacts: ', util.inspect(contacts, {depth:null}));
-	    var formattedContacts = [];
-		contacts.feed.entry.forEach(function (entry) {
-		    try {
-		      var name = entry.title['$t'];
-		      var email = entry['gd$email'];// only save first email
-		      var phone = entry['gd$phoneNumber']; // This is an array, we need to save all of them
-		      var organization = entry['gd$organization']; // Also an array
-		      var address = entry['gd$structuredPostalAddress'];
+};
 
-		      formattedContacts.push({ name: name, email: email });
-		    }
-		    catch (e) {
-		      // property not available...
-		    }
-	    });
-	    console.log(formattedContacts);
-	});
-	// c.on('contactGroupsReceived', function (contactGroups) {
-	//     console.log('groups: ', util.inspect(contactGroups, {depth:null}));
-	// });
-	c.getContacts({
-	    projection: 'thin',
-	    'max-results': 1000
-	});
-}; // exports.google_fetch_contacts
+exports.contacts_create = function(req, res) {
+	var contacts = req.body;
+	var count = 1;
+	var importedCount = 1;
+	var unimportedCount = 0;
+	for (var property in contacts) { // Loop through every property
+	   if( !isNaN(property) ) {      // Only do stuff if the property is a number
+	       contact = contacts[property];
+	       // Check if Google Contact
+	       if (contact.ids.google) {
+		   		var newContact  = new Contact(contact);
+		        newContact.owner = req.user.id
+		        newContact.save(function(err) {
+		           // Duplicate Contacts will not be saved due to Mongo uniquness validation on ids property
+			       if (err) {
+			       		if (err.code === 11000) {  
+				       		console.log("User already exists"); 
+				       		unimportedCount = unimportedCount + 1;
+				        } else {
+				       		console.log(err); 
+				        };
+			       };
+			       count = count + 1;
+			       if (count >= Object.keys(contacts).length) {
+			       		res.send(200, { imported: Object.keys(contacts).length - unimportedCount, unimported: unimportedCount });
+			       }
+			    }); // .save
+	       } // if google contact
+	       if (contact.ids.facebook) {
+	       } // if facebook contact
+	       if (contact.ids.linkedin) {
+	       }; // if linkedin contact
+	   }; // if !isNAN
+	}; // for
+}; // contacts_create
+
